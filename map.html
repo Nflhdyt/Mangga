@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- leaflet css link  -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="plugin/leaflet-search-master/leaflet-search-master/dist/leaflet-search.min.css">
+    <link rel="stylesheet"
+        href="plugin\Leaflet.defaultextent-master\Leaflet.defaultextent-master\dist\leaflet.defaultextent.css">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Mangga</title>
+    <style>
+        /* Geser tombol Zoom dan Layer Control ke bawah */
+        .leaflet-top.leaflet-left {
+            top: 80px;
+        }
+
+        .leaflet-top.leaflet-right {
+            top: 80px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Sticky Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand" href="./Index.html">Mangga</a>
+            <!-- Toggle Button for Responsive Navbar -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar Links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./Index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./map.html">Map</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./form.php">Form</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./Statistik.html">Statistic</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+
+    <!-- Info Pembuat -->
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="infoModalLabel">Info Pembuat</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <table class="table table-striped table-bordered">
+                        <tr>
+                            <th>Nama</th>
+                            <td>Muhammad Naufal Hidayat</td>
+                        <tr>
+                            <th>NIM</th>
+                            <td>23/520500/SV/23249</td>
+                        </tr>
+                        <tr>
+                            <th>Kelas</th>
+                            <td>PG WEB B</td>
+                        </tr>
+                        <tr>
+                            <th>Github</th>
+                            <td><a href="https://github.com/Nflhdyt" target="_blank"
+                                    rel="noopener noreferrer">github.com/Nflhdyt</a></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Modal -->
+    <div class="modal fade" id="featureModal" tabindex="-1" aria-labelledby="featureModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="featureModalTitle"></h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" id="featureModalBody">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="map"></div>
+
+    <div class="custom-label">
+        PETA PRODUKSI MANGGA TAHUN 2023<br>
+        WILAYAH KABUPATEN INDRAMAYU
+    </div>
+
+    <!-- Elemen untuk Legenda -->
+    <div id="legend">
+        <h4>Legenda</h4>
+        <img id="legend-image"
+            src="http://localhost:8080/geoserver/pg_web/wms?service=WMS&version=1.1.0&request=GetLegendGraphic&layer=pg_web:bad&style=indramayustyle&format=image/png"
+            alt="Legenda ADMINISTRASI KABUPATEN">
+    </div>
+
+    <!-- leaflet js link -->
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+        // Inisialisasi peta
+        var map = L.map("map").setView([-6.4192486892830285, 108.16088996489951], 11);
+
+        // Tambahkan basemap OpenStreetMap
+        var osm = L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        });
+        osm.addTo(map);
+
+        // Fungsi untuk menambahkan titik dari database ke peta
+        function loadTitikData() {
+            fetch('data-titik.php') // Ganti dengan path ke skrip PHP Anda
+                .then(response => response.json())
+                .then(data => {
+                    // Menambahkan data GeoJSON ke peta
+                    L.geoJSON(data, {
+                        pointToLayer: function (feature, latlng) {
+                            return L.marker(latlng).bindPopup(feature.properties.nama);
+                        }
+                    }).addTo(map);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        // Panggil fungsi loadTitikData untuk memuat data titik dari database
+        loadTitikData();
+
+        var wmsLayer2 = L.tileLayer.wms("http://localhost:8080/geoserver/pg_web/wms", {
+            layers: "pg_web:jalan",
+            format: "image/png",
+            styles: "jl",
+            transparent: true,
+            attribution: "GeoServer - JALAN"
+        });
+        wmsLayer2.addTo(map);
+
+        // Menambahkan layer GeoServer dengan TileLayer.WMS
+        var wmsLayer1 = L.tileLayer.wms("http://localhost:8080/geoserver/pg_web/wms", {
+            layers: "pg_web:bad",
+            format: "image/png",
+            styles: "indramayustyle",
+            transparent: true,
+            attribution: "GeoServer - ADMINISTRASI"
+        });
+        wmsLayer1.addTo(map);
+
+
+
+        // Menambahkan kontrol layer
+        var baseMap = {
+            "OpenStreetMap": osm
+        };
+
+        var overlayMaps = {
+            "ADMINISTRASI KABUPATEN": wmsLayer1,
+            "JALAN": wmsLayer2
+        };
+
+        var layerControl = L.control.layers(baseMap, overlayMaps).addTo(map);
+
+
+        // Tambahkan fitur scale bar
+        L.control.scale({
+            imperial: false,
+            position: 'bottomright'
+        }).addTo(map);
+        // Tambahkan Layer Tile Map (OpenStreetMap)
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 18,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        L.control.layers(baseMaps).addTo(map);
+
+        // Fungsi dinamis untuk mengubah legenda
+        function updateLegend(layerName) {
+            var legendImage = document.getElementById("legend-image");
+            if (layerName === "ADMINISTRASI KABUPATEN") {
+                legendImage.src = "http://localhost:8080/geoserver/pg_web/wms?service=WMS&version=1.1.0&request=GetLegendGraphic&layer=pg_web:bad&format=image/png";
+                legendImage.alt = "Legenda ADMINISTRASI KABUPATEN";
+            } else {
+                legendImage.src = "";
+                legendImage.alt = "Legenda Tidak Tersedia";
+            }
+        }
+
+        // Watermark Logo
+        L.Control.Watermark = L.Control.extend({
+            onAdd: function (map) {
+                var img = L.DomUtil.create('img');
+
+                img.src = 'C:\Xamppp\htdocs\Project Bondowoso\img\logo.png';
+                img.style.width = '300px';
+
+                return img;
+            },
+
+            onRemove: function (map) {
+                // Nothing to do here
+            }
+        });
+
+        L.control.watermark = function (opts) {
+            return new L.Control.Watermark(opts);
+        }
+    </script>
+
+</body>
+
+</html>

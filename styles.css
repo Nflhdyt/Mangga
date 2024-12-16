@@ -1,0 +1,716 @@
+/* Tetap mempertahankan style dasar */
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.cardo-regular {
+    font-family: "Cardo", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.montserrat {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+:root {
+    --primary-light: #74a84a;
+    --primary-dark: #2c541d;
+    --black: #000000;
+    --white: #efefef;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Montserrat", sans-serif;
+}
+
+/* Navbar tetap berada di atas halaman */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    background-color: var(--white);
+    border-bottom: 1px solid #ddd;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+nav .logo h1 {
+    font-size: 22px; /* Ukuran lebih kecil */
+    font-weight: 700;
+    color: var(--primary-dark);
+}
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 12px; /* Spasi lebih kecil */
+    margin: 0;
+    padding: 0;
+}
+nav ul li a {
+    font-weight: 600;
+    color: var(--primary-dark);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+nav ul li a:hover {
+    color: var(--primary-light);
+}
+/* Header Content */
+#header {
+    width: 100%;
+    height: 80vh; /* Tinggi lebih kecil */
+    background-image: url("./img/background.png");
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-content h1 {
+    font-size: 50px; /* Ukuran lebih kecil */
+    color: var(--primary-dark);
+    margin-bottom: 12px; /* Margin lebih kecil */
+}
+.header-content p {
+    font-size: 20px;
+    color: var(--primary-dark);
+}
+.primary-btn {
+    padding: 8px 20px; /* Ukuran lebih kecil */
+    background-color: var(--primary-light);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+.primary-btn:hover {
+    background-color: var(--primary-dark);
+}
+.header-content {
+    text-align: center;
+}
+
+.menu-btn {
+    display: none;
+}
+.navbar-brand {
+    font-weight: bold;
+    color: #2c541d;
+}
+
+.navbar-nav .nav-link {
+    font-weight: 500;
+    color: #2c541d;
+    transition: color 0.3s;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #74a84a;
+}
+
+.navbar-nav .nav-link.active {
+    color: #74a84a;
+}
+
+body {
+    padding-top: 10px;
+    font-family: "Montserrat", sans-serif;
+}
+/* Atur gambar agar responsif dan terpusat */
+img {
+    max-width: 100%;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/*-----------------------------------------------------------------------------------*/
+
+
+/* Tabel Basis Data */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #e9f5e9;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-bottom: 16px; /* Margin lebih kecil */
+}
+
+table {
+    width: 90%; /* Lebar lebih besar untuk kenyamanan */
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 16px; /* Ukuran font lebih kecil */
+    background-color: #fefefe;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow lebih ringan */
+    border-radius: 6px; /* Sudut lebih halus */
+    overflow: hidden;
+    outline: 1px solid #4CAF50; /* Outline lebih tipis */
+    transition: transform 0.2s;
+}
+
+table:hover {
+    transform: scale(1.01); /* Animasi lebih kecil */
+}
+
+table thead {
+    background-color: #87ceeb;
+    color: white;
+}
+
+table th, table td {
+    padding: 10px 12px; /* Padding lebih kecil */
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+
+table tr:hover {
+    background-color: #f9f9f9; /* Warna latar lebih lembut */
+}
+
+table tr:last-child td {
+    border-bottom: none;
+}
+
+table td a {
+    color: #ff5c5c;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+table td a:hover {
+    color: #ff1a1a;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+h1 {
+    margin-bottom: 20px;
+}
+/* Pengaturan container diagram batang */
+.chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 00px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 900px;
+    background-color: #f8f9fa;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Setiap batang dalam diagram */
+.chart-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100px; /* Ukuran batang */
+    margin: 0 10px; /* Jarak antar batang */
+}
+/* Pengaturan umum untuk container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header styling */
+.text-center {
+    text-align: center;
+    margin-bottom: 30px; /* Memberikan ruang antara header dan diagram */
+}
+/* Gaya batang */
+.bar {
+    width: 100%; /* Menyesuaikan lebar batang dengan container */
+    height: 200px; /* Tinggi batang default, sesuaikan dengan data */
+    background-color: #4CAF50; /* Warna batang */
+    color: white;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 300px;
+    border-radius: 5px 5px 0 0; /* Sudut atas melengkung */
+}
+
+/* Label untuk setiap batang */
+.bar-label {
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #555;
+}
+
+
+
+ /* General reset */
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Sticky Navbar */
+nav.navbar {
+    background-color: #f8f9fa;
+    border-radius: 0px 0px 10px 10px; /* Membuat ujung bawah navbar membulat */
+    margin-bottom: 20px;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #333;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #4CAF50;
+}
+
+/* Section styles */
+section {
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: #f2f2f2;
+    border-radius: 10px; /* Ujung bagian section membulat */
+}
+
+section#header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 60px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+section#header h1 {
+    margin-bottom: 20px;
+    font-size: 3rem;
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+}
+
+section#header .primary-btn {
+    background-color: white;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+section#header .primary-btn:hover {
+    background-color: #388e3c;
+    color: white;
+}
+
+/* Paragraph formatting */
+p {
+    font-family: 'Cardo', serif; /* Menggunakan font Cardo */
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 1.6;
+}
+
+/* Services section styling */
+#services {
+    background-color: #ffffff;
+}
+
+.services h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+}
+
+.services p {
+    font-size: 1.1rem;
+}
+
+#about .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+}
+
+#about .aboout-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Adjust section padding */
+section#services,
+section#about {
+    padding: 60px 20px;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    font-family: 'Montserrat', sans-serif; /* Menggunakan font Montserrat */
+}
+
+ /* General reset */
+ * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* Sticky Navbar */
+nav.navbar {
+    background-color: #f8f9fa;
+    border-radius: 0px 0px 10px 10px; /* Membuat ujung bawah navbar membulat */
+    margin-bottom: 20px;
+}
+
+.navbar .navbar-nav .nav-link {
+    color: #333;
+}
+
+.navbar .navbar-nav .nav-link:hover {
+    color: #4CAF50;
+}
+
+/* Section styles */
+section {
+    padding: 40px 20px;
+    margin: 20px 0;
+    background-color: #f2f2f2;
+    border-radius: 10px; /* Ujung bagian section membulat */
+}
+
+section#header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 60px 0;
+    border-radius: 10px;
+    text-align: center;
+}
+
+section#header h1 {
+    margin-bottom: 20px;
+    font-size: 3rem;
+}
+
+section#header .primary-btn {
+    background-color: white;
+    color: #4CAF50;
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+}
+
+section#header .primary-btn:hover {
+    background-color: #388e3c;
+    color: white;
+}
+
+/* Paragraph formatting */
+p {
+    text-align: justify;
+    text-indent: 30px;
+    line-height: 1.6;
+}
+
+/* Services section styling */
+#services {
+    background-color: #ffffff;
+}
+
+.services h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+.services p {
+    font-size: 1.1rem;
+}
+
+/* About Us Section styling */
+#about .about-container {
+    margin-bottom: 20px;
+}
+
+#about .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
+#about .aboout-img img {
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* Adjust section padding */
+section#services,
+section#about {
+    padding: 60px 20px;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+}
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#map {
+    width: 100%;
+    height: 100vh;
+    
+}
+
+#legend {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: white;
+    padding: 10px;
+    border: 1px solid black;
+    z-index: 1000;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#legend h4 {
+    grid-column: 1 / span 2;
+    text-align: center;
+}
+/* Untuk overlay label dan tombol */
+.custom-label {
+    position: absolute;
+    top: 80px;
+    right: 10px;
+    background-color: rgba(240, 78, 80, 0.8); /* Warna merah dengan transparansi */
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px; /* Membuat sudut melengkung */
+    font-family: 'Roboto', sans-serif; /* Font modern Roboto */
+    font-size: 16px;
+    font-weight: 700; /* Tebal untuk kesan modern */
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Shadow lembut */
+    z-index: 1000;
+    letter-spacing: 1px; /* Memberikan jarak antar huruf */
+    text-transform: uppercase; /* Mengubah teks menjadi huruf besar */
+    backdrop-filter: blur(5px); /* Efek blur pada background */
+    -webkit-backdrop-filter: blur(5px); /* Efek blur untuk browser Safari */
+}
+.custom-footer {
+    background-color: #343a40; /* Dark Gray Background */
+    color: var(--black);
+    padding: 20px 0;
+    margin-top: 50px;
+    font-family: 'Roboto', sans-serif;
+    background-image: url('path/to/your-image.jpg'); /* Ganti dengan URL gambar Anda */
+    background-size: cover; /* Gambar menutupi seluruh area footer */
+    background-position: center; /* Pusatkan gambar */
+    background-repeat: no-repeat; /* Hindari pengulangan gambar */
+}
+
+.custom-footer h5 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.custom-footer p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.custom-footer .copyright {
+    font-size: 14px;
+    color: #ced4da;
+}
+
+.custom-footer a {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.custom-footer a:hover {
+    color: #ffc107; /* Highlight Color on Hover */
+}
+
+/* Section Full Width */
+.full-width-section {
+    width: 100%;
+    padding: 50px 0;
+    background-color: #f8f9fa;
+}
+
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.section-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333333;
+    margin-bottom: 20px;
+}
+
+/* Chart Container */
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 400px;
+    padding: 20px;
+}
+
+.chart-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bar {
+    width: 80px;
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px 8px 0 0;
+}
+
+.bar-label {
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    color: #555;
+}
+.text-center p {
+    margin: 0; /* Menghapus margin default pada paragraf */
+}
+/* Tabel Data */
+.table {
+    margin-top: 20px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table th, .table td {
+    vertical-align: middle;
+}
+
+.table-dark th {
+    background-color: #343a40 !important;
+    color: #ffffff;
+}
+
+.custom-footer {
+    background-color: #f8f9fa; /* Warna latar terang */
+    font-family: 'Roboto', sans-serif;
+    color: #333;
+}
+
+.footh {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #212529;
+}
+
+.footi li {
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #6c757d;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.footi li:hover {
+    color: #007bff; /* Efek hover warna biru */
+}
+
+.copyright {
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.social-icons a {
+    text-decoration: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+    color: #007bff;
+}
+
+/* Mengatur ukuran ikon dan warna hitam */
+.social-icon i {
+    font-size: 32px; /* Ukuran ikon lebih besar */
+    color: #000; /* Warna hitam */
+    margin-right: 15px; /* Memberi jarak antar ikon */
+    transition: transform 0.3s ease; /* Animasi saat hover */
+}
+
+.social-icon i:hover {
+    transform: scale(1.2); /* Perbesar ikon saat di-hover */
+}
+
+.carousel-padding {
+    padding-top: 50px; /* Tambahkan nilai padding yang diinginkan */
+}
+#carouselExampleAutoplaying {
+    background-color: #f8f9fa;
+    border-radius: 10px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
